@@ -6,6 +6,11 @@ control "cis-1-5-1" do
     its('owner') { should eq 'root' }
     its('group') { should eq 'root'}
   end
+describe file('/etc/myapp.conf') do
+  it { should exist }
+  its ('mode') { should cmp '0644' }
+end
+
 end
 
 
