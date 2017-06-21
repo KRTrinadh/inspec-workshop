@@ -8,6 +8,8 @@ end
 describe interface('enp0s3') do
   it { should be_up }
 end
-
+describe command('lsb_release -a') do
+its('stdout') { should match /16.10/ }
+end
 end
 
