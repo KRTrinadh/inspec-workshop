@@ -26,3 +26,12 @@ describe command('lsb_release -a') do
 		its('stdout') { should match /16.10/ }
 	end
 end
+
+
+control 'KERNEL-VERSION'do
+impact 1.0
+title "checking kernel version"
+describe command('uname -r') do
+		its('stdout') { should match /4.8.0-56-generic/ }
+	end
+end

@@ -1,0 +1,41 @@
+control "JUMPBOX-STAGING-API" do
+impact 1.0
+title "ports checking"
+describe service 'ssh' do
+		it { should be_enabled }
+		it { should be_running }
+		it { should be_installed }
+	end
+describe port '22' do                       
+		it { should be_listening }
+	end
+describe service 'ntp' do
+		it { should be_enabled }
+		it { should be_running }
+		it { should be_installed }
+	end
+describe port (123) do
+		its('processes') { should include 'ntpd' }
+		its('protocols') { should include 'udp' }
+		its('addresses') { should include '0.0.0.0' }
+	end
+describe port (40945) do
+		its('processes') { should include 'dhclient' }
+		its('protocols') { should include 'udp' }
+		its('addresses') { should include '0.0.0.0' }
+	end
+describe service 'rsyslog' do
+		it { should be_enabled }
+		it { should be_running }
+		it { should be_installed }
+	end
+describe port '514' do                       
+		it { should be_listening }
+	end
+describe port '53' do                       
+		it { should be_listening }
+	end
+describe port '3030' do                       
+		it { should be_listening }
+	end
+end

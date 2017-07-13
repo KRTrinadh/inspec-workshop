@@ -8,23 +8,23 @@ describe port (123) do
 	end
 end
 
-
-control "NTP-SERVICE" do
-impact 1.0
-title "ntp service status checking "
-describe service 'ntp' do
-		it { should be_installed }
-		it { should be_running }
-		it { should be_enabled }
-	end
-end
-
-
-control "NTP-CONFIG" do
-impact 1.0
-title "checks of configuration file"
-describe ntp_conf do   
-		its('restrict') { should include '-4 default kod notrap nomodify nopeer noquery limited'}
-		its('pool') { should eq ["0.ubuntu.pool.ntp.org iburst", "1.ubuntu.pool.ntp.org iburst", "2.ubuntu.pool.ntp.org iburst", "3.ubuntu.pool.ntp.org iburst", "ntp.ubuntu.com"] }
-	end
-end
+#
+#control "NTP-SERVICE" do
+#impact 1.0
+#title "ntp service status checking "
+#describe service 'ntp' do
+#		it { should be_installed }
+#		it { should be_running }
+#		it { should be_enabled }
+#	end
+#end
+#
+#
+#control "NTP-CONFIG" do
+#impact 1.0
+#title "checks of configuration file"
+#describe ntp_conf do   
+#		its('restrict') { should include '-4 default kod notrap nomodify nopeer noquery limited'}
+#		its('pool') { should eq ["0.ubuntu.pool.ntp.org iburst", "1.ubuntu.pool.ntp.org iburst", "2.ubuntu.pool.ntp.org iburst", "3.ubuntu.pool.ntp.org iburst", "ntp.ubuntu.com"] }
+#	end
+#end
